@@ -1,0 +1,12 @@
+config:
+  messageCategory: entero:process
+migration:
+  create_setting_table:
+    fields: |
+      project_code:string(50):foreignKey(project code),
+      type:smallInteger,
+      name:string,
+      description:string(50),
+      status:smallInteger,
+      created_at:integer,
+      updated_at:integer
