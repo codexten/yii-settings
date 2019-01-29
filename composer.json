@@ -1,0 +1,21 @@
+{
+  "name": "codexten/yii-settings",
+  "description": "codexten,yii,settings",
+  "keywords": [
+    "eii"
+  ],
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "codextend\\yii\\settings\\": "src"
+    }
+  },
+  "sextra": {
+    "branch-alias": {
+      "dev-master": "2.0.x-dev"
+    },
+    "config-plugin": {
+      "settings": "src/config/settings.php"
+    }
+  }
+}
