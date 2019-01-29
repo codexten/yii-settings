@@ -10,11 +10,11 @@
       "codextend\\yii\\settings\\": "src"
     }
   },
-  "sextra": {
+  "extra": {
     "branch-alias": {
       "dev-master": "2.0.x-dev"
     },
-    "config-plugin": {
+    "sconfig-plugin": {
       "settings": "src/config/settings.php"
     }
   }
