@@ -7,7 +7,7 @@
  */
 
 /**
- * @property \entero\components\Settings $settings
+ * @property \codexten\yii\settings\components\Settings $settings
  */
 abstract class BaseApplication extends yii\base\Application
 {

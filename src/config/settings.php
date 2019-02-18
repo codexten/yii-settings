@@ -15,7 +15,6 @@ return [
     'components' => [
         'settings' => [
             'class' => \entero\components\Settings::class,
-
         ],
     ],
 ];
