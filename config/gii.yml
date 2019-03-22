@@ -1,5 +1,5 @@
 config:
-  messageCategory: entero:process
+  messageCategory: codexten:settings
 migration:
   create_setting_table:
     fields: |
