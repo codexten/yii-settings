@@ -14,6 +14,7 @@ use yii\base\Component;
 class Section extends Component
 {
     public $modelClass;
+    public $icon;
     private $_label;
     private $_key;
 
