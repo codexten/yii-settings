@@ -12,4 +12,9 @@ return [
             'class' => \codexten\yii\settings\components\Settings::class,
         ],
     ],
+    'modules' => [
+        'settings' => [
+            'class' => \codexten\yii\settings\SettingsModule::class,
+        ],
+    ],
 ];

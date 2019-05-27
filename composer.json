@@ -7,7 +7,7 @@
   "type": "library",
   "autoload": {
     "psr-4": {
-      "codextend\\yii\\settings\\": "src"
+      "codexten\\yii\\settings\\": "src"
     }
   },
   "extra": {
