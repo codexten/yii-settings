@@ -2,6 +2,7 @@
 
 namespace codexten\yii\settings\components;
 
+use codexten\yii\settings\models\SettingModel;
 use Yii;
 use yii\base\Component;
 use yii\caching\Cache;
@@ -38,7 +39,7 @@ class Settings extends Component
     public $cacheKey = 'yii2mod-setting';
 
     /**
-     * @var \codexten\yii\settings\models\SettingModel setting model
+     * @var SettingModel setting model
      */
     protected $model;
 
@@ -87,6 +88,32 @@ class Settings extends Component
         return $this->setting;
     }
 
+//    /**
+//     * Get's the value for the given section and key.
+//     *
+//     * @param string $section
+//     * @param string $key
+//     * @param null $default
+//     *
+//     * @return mixed
+//     */
+//    public function get($section, $key, $default = null)
+//    {
+//        $items = $this->getSettingsConfig();
+//
+//        if (isset($items[$section][$key])) {
+//            $this->setting = ArrayHelper::getValue($items[$section][$key], 'value');
+//            $type = ArrayHelper::getValue($items[$section][$key], 'type');
+//            $this->convertSettingType($type);
+//        } else {
+//            $this->setting = $default;
+//        }
+//
+//        return $this->setting;
+//    }
+//
+
+
     /**
      * Get's the value for the given section and key.
      *
@@ -96,41 +123,32 @@ class Settings extends Component
      *
      * @return mixed
      */
-    public function get($section, $key, $default = null)
+    public function get($key, $default = null)
     {
-        $items = $this->getSettingsConfig();
-
-        if (isset($items[$section][$key])) {
-            $this->setting = ArrayHelper::getValue($items[$section][$key], 'value');
-            $type = ArrayHelper::getValue($items[$section][$key], 'type');
-            $this->convertSettingType($type);
-        } else {
-            $this->setting = $default;
-        }
 
         return $this->setting;
     }
 
-    /**
-     * Add a new setting or update an existing one.
-     *
-     * @param null $section
-     * @param string $key
-     * @param string $value
-     * @param null $type
-     *
-     * @return bool
-     */
-    public function set($section, $key, $value, $type = null): bool
-    {
-        if ($this->model->setSetting($section, $key, $value, $type)) {
-            if ($this->invalidateCache()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
+//    /**
+//     * Add a new setting or update an existing one.
+//     *
+//     * @param null $section
+//     * @param string $key
+//     * @param string $value
+//     * @param null $type
+//     *
+//     * @return bool
+//     */
+//    public function set($section, $key, $value, $type = null): bool
+//    {
+//        if ($this->model->setSetting($section, $key, $value, $type)) {
+//            if ($this->invalidateCache()) {
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
 
     /**
      * Checking existence of setting
@@ -202,27 +220,27 @@ class Settings extends Component
         return $this->model->deactivateSetting($section, $key);
     }
 
-    /**
-     * Returns the settings config
-     *
-     * @return array
-     */
-    protected function getSettingsConfig(): array
-    {
-        if (!$this->cache instanceof Cache) {
-            $this->items = $this->model->getSettings();
-        } else {
-            $cacheItems = $this->cache->get($this->cacheKey);
-            if (!empty($cacheItems)) {
-                $this->items = $cacheItems;
-            } else {
-                $this->items = $this->model->getSettings();
-                $this->cache->set($this->cacheKey, $this->items);
-            }
-        }
-
-        return $this->items;
-    }
+//    /**
+//     * Returns the settings config
+//     *
+//     * @return array
+//     */
+//    protected function getSettingsConfig(): array
+//    {
+//        if (!$this->cache instanceof Cache) {
+//            $this->items = $this->model->getSettings();
+//        } else {
+//            $cacheItems = $this->cache->get($this->cacheKey);
+//            if (!empty($cacheItems)) {
+//                $this->items = $cacheItems;
+//            } else {
+//                $this->items = $this->model->getSettings();
+//                $this->cache->set($this->cacheKey, $this->items);
+//            }
+//        }
+//
+//        return $this->items;
+//    }
 
     /**
      * Invalidate the cache
